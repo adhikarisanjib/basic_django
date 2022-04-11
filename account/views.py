@@ -55,20 +55,20 @@ def login_view(request, *args, **kwargs):
                     user.is_active = True
                     user.save()
 
-                if not user.is_email_verified:
-                    try:
-                        site = get_current_site(request)
-                        subject = 'Activate Your Account.'
-                        message = render_to_string('account/email/account_activation_email.html', {
-                            'user': user,
-                            'domain': site.domain,
-                            'uid': urlsafe_base64_encode(force_bytes(user.id)),
-                            'token': account_activation_token.make_token(user),
-                        })
-                        send_mail(subject, message, settings.EMAIL_HOST_USER, [user.email, ], fail_silently=False)
-                    except Exception as e:
-                        messages.info(request, f'Something went wrong while sending verification email. Please refresh the page and login again.')
-                        return render(request, 'account/email/account_verified.html', context)
+#                 if not user.is_email_verified:
+#                     try:
+#                         site = get_current_site(request)
+#                         subject = 'Activate Your Account.'
+#                         message = render_to_string('account/email/account_activation_email.html', {
+#                             'user': user,
+#                             'domain': site.domain,
+#                             'uid': urlsafe_base64_encode(force_bytes(user.id)),
+#                             'token': account_activation_token.make_token(user),
+#                         })
+#                         send_mail(subject, message, settings.EMAIL_HOST_USER, [user.email, ], fail_silently=False)
+#                     except Exception as e:
+#                         messages.info(request, f'Something went wrong while sending verification email. Please refresh the page and login again.')
+#                         return render(request, 'account/email/account_verified.html', context)
 
                     messages.info(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
                     return render(request, 'account/email/account_verified.html', context)
@@ -105,19 +105,19 @@ def register_view(request, *args, **kwargs):
         if form.is_valid():
             user = form.save()
 
-            try:
-                site = get_current_site(request)
-                subject = 'Activate Your Account.'
-                message = render_to_string('account/email/account_activation_email.html', {
-                    'user': user,
-                    'domain': site.domain,
-                    'uid': urlsafe_base64_encode(force_bytes(user.id)),
-                    'token': account_activation_token.make_token(user),
-                })
-                send_mail(subject, message, settings.EMAIL_HOST_USER, [user.email, ], fail_silently=False)
-            except Exception as e:
-                messages.success(request, f'There was a problem while sending verification email. Please proceed to login.')
-                return render(request, 'account/email/account_verified.html', context)
+#             try:
+#                 site = get_current_site(request)
+#                 subject = 'Activate Your Account.'
+#                 message = render_to_string('account/email/account_activation_email.html', {
+#                     'user': user,
+#                     'domain': site.domain,
+#                     'uid': urlsafe_base64_encode(force_bytes(user.id)),
+#                     'token': account_activation_token.make_token(user),
+#                 })
+#                 send_mail(subject, message, settings.EMAIL_HOST_USER, [user.email, ], fail_silently=False)
+#             except Exception as e:
+#                 messages.success(request, f'There was a problem while sending verification email. Please proceed to login.')
+#                 return render(request, 'account/email/account_verified.html', context)
 
             messages.success(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
             return render(request, 'account/email/account_verified.html', context)
