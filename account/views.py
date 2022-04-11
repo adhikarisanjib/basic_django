@@ -70,8 +70,8 @@ def login_view(request, *args, **kwargs):
 #                         messages.info(request, f'Something went wrong while sending verification email. Please refresh the page and login again.')
 #                         return render(request, 'account/email/account_verified.html', context)
 
-                    messages.info(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
-                    return render(request, 'account/email/account_verified.html', context)
+#                     messages.info(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
+#                     return render(request, 'account/email/account_verified.html', context)
             else:
                 messages.warning(request, f'Something went wrong.')
                 context['form'] = LoginForm()
@@ -119,8 +119,11 @@ def register_view(request, *args, **kwargs):
 #                 messages.success(request, f'There was a problem while sending verification email. Please proceed to login.')
 #                 return render(request, 'account/email/account_verified.html', context)
 
+#             messages.success(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
+#             return render(request, 'account/email/account_verified.html', context)
+
             messages.success(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
-            return render(request, 'account/email/account_verified.html', context)
+            return redirect('home')
         else:
             messages.warning(request, f'Error...!')
             context['form'] = form
