@@ -122,8 +122,8 @@ def register_view(request, *args, **kwargs):
 #             messages.success(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
 #             return render(request, 'account/email/account_verified.html', context)
 
-            messages.success(request, f'An email with verification link is sent to your Email ID. Verify Your account before login.')
-            return redirect('home')
+            messages.success(request, f'Account created successfully.')
+            return redirect('account:login')
         else:
             messages.warning(request, f'Error...!')
             context['form'] = form
