@@ -3,7 +3,7 @@ from basic.tasks import celery_test
 
 def home(request, *args, **kwargs):
     context = {}
-    celery_test.delay()
+#     celery_test.delay()
     return render(request, 'home.html', context)
 
 def page_not_found_view(request, *args, **kwargs):
