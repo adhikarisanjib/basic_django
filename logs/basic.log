@@ -1,0 +1,11 @@
+"GET / HTTP/1.1" 200 5235
+"GET /static/css/base.css HTTP/1.1" 200 2324
+"GET /static/css/bootstrap.css HTTP/1.1" 200 173352
+Not Found: /favicon.ico
+"GET /favicon.ico HTTP/1.1" 404 5319
+"GET /login/ HTTP/1.1" 200 6983
+"POST /login/ HTTP/1.1" 200 5437
+"GET /login/ HTTP/1.1" 200 6983
+"POST /login/ HTTP/1.1" 200 7068
+"POST /login/ HTTP/1.1" 200 7068
+"POST /login/ HTTP/1.1" 200 7068
